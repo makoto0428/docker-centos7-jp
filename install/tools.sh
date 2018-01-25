@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
+### Install Repositry
+yum -y install epel-release 
+
 ### Install wget
 yum -y install wget
-yum clean all
 if [ ! "$PROXY" = "" ] ; then
   sed -i -e "s/proxy.yoyodyne.com:18023/$PROXY/" /etc/wgetrc
   sed -i -e "s/^#https_proxy/https_proxy/g" /etc/wgetrc
@@ -11,3 +13,5 @@ if [ ! "$PROXY" = "" ] ; then
   sed -i -e "s/^#ftp_proxy/ftp_proxy/g" /etc/wgetrc
 fi
 
+### Clean yum cache
+yum clean all
