@@ -15,6 +15,9 @@ RUN $INST_SCRIPTS/http_proxy.sh
 # system update
 RUN yum -y update && yum clean all
 
+# Install tools
+RUN $INST_SCRIPTS/tools.sh
+
 # Set Locale
 RUN rm -f /etc/rpm/macros.image-language-conf && \
     sed -i '/^override_install_langs=/d' /etc/yum.conf
